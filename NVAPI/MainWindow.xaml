@@ -1,0 +1,55 @@
+﻿<Window x:Class="LaMetricEthermineMonitor.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:LaMetricEthermineMonitor"
+        mc:Ignorable="d"
+        Title="LaMetric Ethermine Monitor" Height="450" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <GroupBox Header="Reading Steiner" Grid.Row="0" Grid.Column="0" >
+            <TreeView x:Name="sensorTreeView" >
+                <TreeView.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Vertical">
+                            <TextBlock Text="{Binding szLabelUser, Mode=TwoWay}" />
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="{Binding SensorValue, Mode=TwoWay}" />
+                                <TextBlock Text="{Binding szUnit, Mode=TwoWay}" Margin="3,0,0,0" />
+                            </StackPanel>
+                        </StackPanel>
+                    </DataTemplate>
+                </TreeView.ItemTemplate>
+            </TreeView>
+        </GroupBox>
+        <Grid Grid.Row="0" Grid.Column="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <GroupBox x:Name="gb1" Header="Listener IP Address" Grid.Row="0" Grid.Column="0" >
+                <TextBox x:Name="EthermineWalletAddressTextBox" Text="{Binding Path=WalletAddress, Mode=TwoWay}" />
+            </GroupBox>
+            <GroupBox x:Name="gb2" Header="LaMetric URL" Grid.Row="1" Grid.Column="0" >
+                <TextBox x:Name="LaMetricURLTextBox" Text="{Binding Path=URL, Mode=TwoWay}" />
+            </GroupBox>
+            <GroupBox x:Name="gb3" Header="LaMetric X-Access-Token" Grid.Row="2" Grid.Column="0" >
+                <TextBox x:Name="LaMetricXAccessTokenTextBox" Text="{Binding Path=XAccessToken, Mode=TwoWay}" />
+            </GroupBox>
+            <Button x:Name="pushButton" Content="PUSH" Grid.Row="3" Grid.Column="0" Click="PushButton_Click" />
+        </Grid>
+
+    </Grid>
+</Window>
